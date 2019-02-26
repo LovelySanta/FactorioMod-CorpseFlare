@@ -1,4 +1,4 @@
-require 'lib/corpse-flare'
+require 'src/corpse-flare'
 
 -- on load game for first time
 script.on_init(function(_)

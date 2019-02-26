@@ -9,7 +9,7 @@ data:extend({
     icon = "__CorpseFlare__/graphics/icons/corpse-flare.png",
     icon_size = 32,
     scale = 1,
-    flags = {"goes-to-main-inventory"},
+    --flags = {},
     subgroup = "tool",
     order = "z[mining]-z[shovel]",
     stack_size = 1
@@ -41,8 +41,8 @@ data:extend({
       count = 100,
       ingredients =
       {
-        {"science-pack-1", 1},
-        {"science-pack-2", 1},
+        {"automation-science-pack", 1},
+        {"logistic-science-pack", 1},
         {"military-science-pack", 1},
       },
       time = 20
