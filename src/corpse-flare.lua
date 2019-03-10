@@ -27,20 +27,6 @@ function CorpseFlare.OnPrePlayerDied(self, playerIndex)
       return
     end
   end
-
-  local playerQuickbar = player.get_inventory(defines.inventory.player_quickbar)
-  if playerQuickbar then
-    local playerQuickbarContent = playerQuickbar.get_contents()
-
-    if playerQuickbarContent and playerQuickbarContent["corpse-flare"] and playerQuickbarContent["corpse-flare"] > 0 then
-      -- Remove a flare from the inventory
-      playerQuickbar.remove{name="corpse-flare", count=1}
-      -- Create a flare entity
-      self:CreateNewFlare(playerIndex)
-      -- No need to look further, we can quit this function
-      return
-    end
-  end
 end
 
 
