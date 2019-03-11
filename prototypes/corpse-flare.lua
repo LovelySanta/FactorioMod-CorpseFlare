@@ -6,9 +6,19 @@ data:extend({
   {
     type = "item",
     name = "corpse-flare",
-    icon = "__CorpseFlare__/graphics/icons/corpse-flare.png",
-    icon_size = 32,
-    scale = 1,
+    icons = {
+      {
+        icon = "__CorpseFlare__/graphics/icons/corpse-flare-1.png",
+        icon_size = 176,
+        scale  = 32/176,
+      },
+      {
+        icon = "__CorpseFlare__/graphics/icons/corpse-flare-2.png",
+        icon_size = 500,
+        scale  = 32/500 * .65,
+        shift = {7.5,7.5},
+      }
+    },
     --flags = {},
     subgroup = "tool",
     order = "z[mining]-z[shovel]",

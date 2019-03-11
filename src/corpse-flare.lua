@@ -1,5 +1,6 @@
 
 CorpseFlare = {}
+local flare_duration = 60 * 60 * 2 -- in ticks
 
 function CorpseFlare.Init(self)
   if not global.BZ_flare then
@@ -34,7 +35,7 @@ end
 function CorpseFlare.CreateNewFlare(_, playerIndex)
   local player = game.players[playerIndex]
 
-  global.BZ_flare[playerIndex] = player.surface.create_entity{
+  local flare = player.surface.create_entity{
     name='flare-cloud',
     position = {
       x = player.position.x + 3.25,
@@ -43,5 +44,18 @@ function CorpseFlare.CreateNewFlare(_, playerIndex)
     force = 'enemy',
     -- target = player.character,
     speed = 0.15
+  }
+  global.BZ_flare[playerIndex] = flare
+
+  -- also create a light source
+  local id        = rendering.draw_light{
+    sprite        = "utility/light_small",
+    color         = {224/255, 11/255, 199/255},
+    scale         = 1.5,
+    target        = flare,
+    target_offset = {x = -3.25, y = 2.5},
+    surface       = flare.surface,
+    --time_to_live  = flare_duration + 2 * 60,
+    visible = true,
   }
 end

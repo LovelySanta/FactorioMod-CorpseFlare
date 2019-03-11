@@ -3,7 +3,7 @@ This mod adds an item you keep in your inventory. When you die with an emergency
 ![Example of the emergency flare](https://raw.githubusercontent.com/LovelySanta/FactorioMod-CorpseFlare/master/graphics/screenshots/CorpseFlare.png)
 
 # Changelog
-### Future
-+     Flare giving light in the dark
+### Origin
++ Release of the corpe flare as stand alone mod from my [BugZilla](https://mods.factorio.com/mod/BugZilla) mod.
 ### Latest release
-+     Release of the corpe flare as stand alone mod from my [BugZilla](https://mods.factorio.com/mod/BugZilla) mod.
++ See ingame changelog or find it [here on github](https://github.com/LovelySanta/FactorioMod-CorpseFlare/blob/master/changelog.txt).
