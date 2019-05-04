@@ -6,7 +6,7 @@ function CorpseFlare.Init(self)
   if not global.BZ_flare then
     global.BZ_flare = {}
     -- Becose i'm to lazy to give myself a corpse flare each time while testing
-    --game.players['lovely_santa'].get_inventory(defines.inventory.player_main).insert{name='corpse-flare',count=1}
+    --game.players['lovely_santa'].get_main_inventory().insert{name='corpse-flare',count=1}
   end
 end
 
@@ -15,7 +15,7 @@ end
 function CorpseFlare.OnPrePlayerDied(self, playerIndex)
   local player = game.players[playerIndex]
 
-  local playerInventory = player.get_inventory(defines.inventory.player_main)
+  local playerInventory = player.get_main_inventory()
   if playerInventory then
     local playerInventoryContent = playerInventory.get_contents()
 
