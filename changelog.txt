@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.1.5
+Date: 20. 05. 2019
+  Features:
+    - Added setting to not require any technology/items to have the flare (it is then just always active).
+    - Added item description to the corpse flare item
+---------------------------------------------------------------------------------------------------
 Version: 0.1.4
 Date: 04. 05. 2019
   Fixes:

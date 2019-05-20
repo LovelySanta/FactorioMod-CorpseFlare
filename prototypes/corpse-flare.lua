@@ -1,72 +1,75 @@
 local flare_duration = 60 * 60 * 2 -- in ticks
 local flare_range = 2 -- radius
 
-
-data:extend({
-  {
-    type = "item",
-    name = "corpse-flare",
-    icons = {
-      {
-        icon = "__CorpseFlare__/graphics/icons/corpse-flare-1.png",
-        icon_size = 176,
-        scale  = 32/176,
+if settings.startup["CorpseFlare_requireItems"].value then
+  data:extend{
+    {
+      type = "item",
+      name = "corpse-flare",
+      icons = {
+        {
+          icon = "__CorpseFlare__/graphics/icons/corpse-flare-1.png",
+          icon_size = 176,
+          scale  = 32/176,
+        },
+        {
+          icon = "__CorpseFlare__/graphics/icons/corpse-flare-2.png",
+          icon_size = 500,
+          scale  = 32/500 * .65,
+          shift = {7.5,7.5},
+        }
       },
-      {
-        icon = "__CorpseFlare__/graphics/icons/corpse-flare-2.png",
-        icon_size = 500,
-        scale  = 32/500 * .65,
-        shift = {7.5,7.5},
-      }
+      --flags = {},
+      subgroup = "tool",
+      order = "z[mining]-z[shovel]",
+      stack_size = 1
     },
-    --flags = {},
-    subgroup = "tool",
-    order = "z[mining]-z[shovel]",
-    stack_size = 1
-  },
 
-  {
-    type = "recipe",
-    name = "corpse-flare",
-    enabled = false,
-    ingredients =
     {
-      {type="item", name="electronic-circuit", amount=5},
-      {type="item", name="small-lamp", amount=5},
-      {type="item", name="grenade", amount=1}
-    },
-    energy_required = 5,
-    result= "corpse-flare",
-    result_count = 1
-  },
-
-  {
-    type = "technology",
-    name = "corpse-flare",
-    prerequisites = {"military-2"},
-    icon = "__CorpseFlare__/graphics/technology/corpse-flare.png",
-    icon_size = 64,
-    unit =
-    {
-      count = 100,
+      type = "recipe",
+      name = "corpse-flare",
+      enabled = false,
       ingredients =
       {
-        {"automation-science-pack", 1},
-        {"logistic-science-pack", 1},
-        {"military-science-pack", 1},
+        {type="item", name="electronic-circuit", amount=5},
+        {type="item", name="small-lamp", amount=5},
+        {type="item", name="grenade", amount=1}
       },
-      time = 20
+      energy_required = 5,
+      result= "corpse-flare",
+      result_count = 1
     },
-    effects =
-    {
-      {
-        type = "unlock-recipe",
-        recipe = "corpse-flare"
-      }
-    },
-    order = "b-d"
-  },
 
+    {
+      type = "technology",
+      name = "corpse-flare",
+      prerequisites = {"military-2"},
+      icon = "__CorpseFlare__/graphics/technology/corpse-flare.png",
+      icon_size = 64,
+      unit =
+      {
+        count = 100,
+        ingredients =
+        {
+          {"automation-science-pack", 1},
+          {"logistic-science-pack", 1},
+          {"military-science-pack", 1},
+        },
+        time = 20
+      },
+      effects =
+      {
+        {
+          type = "unlock-recipe",
+          recipe = "corpse-flare"
+        }
+      },
+      order = "b-d"
+    },
+  }
+end
+
+data:extend{
   {
     type = "smoke-with-trigger",
     name = "flare-cloud",
@@ -120,4 +123,4 @@ data:extend({
     },
     action_cooldown = flare_duration + 2 * 60,
   },
-})
+}

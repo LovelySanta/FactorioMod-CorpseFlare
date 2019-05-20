@@ -15,18 +15,26 @@ end
 function CorpseFlare.OnPrePlayerDied(self, playerIndex)
   local player = game.players[playerIndex]
 
-  local playerInventory = player.get_main_inventory()
-  if playerInventory then
-    local playerInventoryContent = playerInventory.get_contents()
+  -- if we don't require items then we always create the item
+  if settings.startup["CorpseFlare_requireItems"].value then
+    -- check if we have items to create the flare
+    local playerInventory = player.get_main_inventory()
+    if playerInventory then
+      local playerInventoryContent = playerInventory.get_contents()
 
-    if playerInventoryContent and playerInventoryContent["corpse-flare"] and playerInventoryContent["corpse-flare"] > 0 then
-      -- Remove a flare from the inventory
-      playerInventory.remove{name="corpse-flare", count=1}
-      -- Create a flare entity
-      self:CreateNewFlare(playerIndex)
-      -- No need to look further, we can quit this function
-      return
+      if playerInventoryContent and playerInventoryContent["corpse-flare"] and playerInventoryContent["corpse-flare"] > 0 then
+        -- Remove a flare from the inventory
+        playerInventory.remove{name="corpse-flare", count=1}
+        -- Create a flare entity
+        self:CreateNewFlare(playerIndex)
+        -- No need to look further, we can quit this function
+        return
+      end
     end
+
+  else -- we do not require the flare, so we can just create the flare
+    self:CreateNewFlare(playerIndex)
+    return
   end
 end
 
